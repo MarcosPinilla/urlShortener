@@ -75,11 +75,11 @@ export default {
   methods: {
     nuevaDireccion (direccion, data) {
       let vm = this
-      vm.nuevaDireccion = {
-        fullUrl: direccion.url,
-        short: data
-      }
-      vm.direcciones.push(vm.nuevaDireccion)
+      direccionService.query().then(data => {
+        vm.direcciones = data.body
+      }, erro => {
+        console.log('error')
+      })
     }
   },
   components: {DireccionForm}

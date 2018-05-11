@@ -57,7 +57,7 @@ export default {
         if (data.body.error) {
           alert('Direccion de url Invalida')
         }
-        vm.$emit('nuevaDireccion', vm.nuevaDireccion)
+        vm.$emit('nuevaDireccion')
       }, err => {
         alert('error')
         console.log(err)
