@@ -11,35 +11,23 @@
       </v-flex>
     </v-layout>
     <v-layout row wrap>
-      <v-flex xs12 md3>
-        <!--<v-card dark color="red" v-for="direccion in direcciones" :key="direccion.id">
-        <v-card-title primary-title>
-          <div>
-            <h3 class="headline mb-0">{{ direccion.fullUrl }}</h3>
-            <div>{{ direccion.short }}</div>
-          </div>
-        </v-card-title>
-        <v-card-actions>
-          <v-btn color="blue" @click="verPropiedad(direccion)">Ver</v-btn>
-          <v-btn color="blue" @click="editarPropiedad(direccion)">Editar</v-btn>
-        </v-card-actions>
-      </v-card>-->
+      <v-flex xs12 md2>
       </v-flex>
-      <v-flex xs12 md6>
+      <v-flex xs12 md8>
         <v-data-table
           :headers="headers"
           :items="direcciones"
-          hide-actions
+          :pagination.sync="pagination"
           class="elevation-1"
         >
           <template slot="items" slot-scope="props">
             <td>{{ props.item.id }}</td>
-            <td class="text-xs-left">{{ props.item.fullUrl }}</td>
-            <td class="text-xs-left">localhost:8000/{{ props.item.short }}</td>
+            <td class="text-xs-left"><a :href="props.item.fullUrl">{{ props.item.fullUrl }}</a></td>
+            <td class="text-xs-left"><a :href="'localhost:8000/' + props.item.short">localhost:8000/{{ props.item.short }}</a></td>
           </template>
         </v-data-table>
       </v-flex>
-      <v-flex xs12 md3></v-flex>
+      <v-flex xs12 md2></v-flex>
     </v-layout>
     <direccion-form @nuevaDireccion="nuevaDireccion" @closeDialog="dialog = false" :dialog="dialog"></direccion-form>
   </v-container>
@@ -51,6 +39,10 @@ import DireccionForm from '@/components/DireccionForm'
 export default {
   data () {
     return {
+      pagination: {
+        sortBy: 'id',
+        descending: true
+      },
       headers: [
         {
           text: 'Id',
