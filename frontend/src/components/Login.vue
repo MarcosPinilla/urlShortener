@@ -5,7 +5,7 @@
       <v-layout>
         <v-flex xs8 offset-xs2 md6 offset-md3 class="text-xs-center">
           <br><br>
-          <h4>Mis Propiedades</h4>
+          <h4>Acortador de Enlaces</h4>
       </v-flex>
       </v-layout>
     </v-toolbar>
